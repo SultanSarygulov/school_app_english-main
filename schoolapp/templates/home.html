@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Students</h1>
+    {% for user in users %}
+        {% if user.active == 1 %}
+        <article class="media content-section">
+            <img class="rounded-circle article-mg" style="padding:20px; width: 150px; height: 150px;"
+                 src="{{ url_for("static", filename="profile_pics/" + user.image_file) }}">
+            <div class="media-body">
+                <div class="article-metadata" style="margin-bottom: 20px">
+                    <h5>{{ user.full_name }}</h5>
+                    <small class="text-muted">{{ user.email }}</small>
+                </div>
+                <p>Gender: {{ user.gender }}</p>
+                <p>Date Of Birth: {{ user.date_of_birth }}</p>
+                <p >Phone Number: {{ user.phone_number }}</p>
+                <p>Address: {{ user.address }}</p>
+                <p>Grade: {{ user.grade }}</p>
+                <p>Additional info: {{ user.additional_info }}</p>
+            </div>
+        </article>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}
